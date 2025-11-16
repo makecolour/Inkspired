@@ -1,0 +1,323 @@
+---
+title: "Building Your Blog with Open Blog in 5 Minutes"
+description: "Complete guide on how to set up and deploy your blog using Open Blog on Vercel"
+date: 2025-11-16
+---
+
+import { generateBlogMetadata } from "../../../lib/blog";
+import BlogJsonLd from "../../../components/blog-json-ld";
+import Title from "../../../components/title";
+
+export const metadata = generateBlogMetadata({
+  title: "Building Your Blog with Open Blog in 5 Minutes",
+  description: "Complete guide on how to set up and deploy your blog using Open Blog on Vercel",
+  date: "2025-11-16",
+  slug: "building-blog-with-open-blog"
+})
+
+<BlogJsonLd
+  url={metadata.openGraph.url}
+  title={metadata.title}
+  description={metadata.description}
+  authorName="Developer"
+  publishDate={new Date(metadata.openGraph.publishedTime).toISOString()}
+  imageUrl={metadata.openGraph.images?.[0]?.url}
+/>
+
+<Title title={metadata.title} date={metadata.date} />
+
+## Introduction
+
+This is an **example blog post** to help you get started with Open Blog. Follow this guide step by step to understand how to create your first blog post. Feel free to **delete this post when you publish your website** and replace it with your own content!
+
+## Why Choose Open Blog?
+
+Open Blog stands out because it:
+
+- ⚡ Provides **100% Core Web Vitals** with zero configuration
+- 🎨 Supports dark mode automatically
+- 📱 Is fully responsive and lightweight
+- ♿ Follows WCAG 2.2 accessibility standards
+- 🔍 Includes SEO optimization with JSON-LD
+
+## Getting Started
+
+### Step 1: Clone the Repository
+
+Clone the Open Blog repository:
+
+```bash
+git clone https://github.com/dvbtrung2302/open-blog.git
+cd open-blog
+pnpm install
+```
+
+### Step 2: Copy Environment Template
+
+Copy the environment variables template: // [!code highlight]
+
+```bash title="terminal"
+cp .env.example .env.local
+```
+
+Then edit `.env.local` with your information:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://yourblog.com/
+NEXT_PUBLIC_SITE_NAME=My Awesome Blog
+NEXT_PUBLIC_SITE_DESCRIPTION=A blog about web development
+NEXT_PUBLIC_AUTHOR_NAME=Your Name
+NEXT_PUBLIC_AUTHOR_EMAIL=your.email@example.com
+NEXT_PUBLIC_AUTHOR_IMAGE_URL=https://github.com/yourusername.png
+NEXT_PUBLIC_GITHUB_URL=https://github.com/yourusername/
+NEXT_PUBLIC_LINKEDIN_URL=https://www.linkedin.com/in/yourprofile/
+NEXT_PUBLIC_TWITTER_HANDLE=@yourhandle
+NEXT_PUBLIC_COPYRIGHT_YEAR=2025
+```
+
+### Step 3: Start Development Server
+
+Run the development server:
+
+```bash
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Writing Your First Blog Post
+
+### Understanding the Structure
+
+Open Blog uses a simple directory structure for blog posts. Each post needs:
+
+- A directory in `src/app/blog/{slug}/`
+- A `page.mdx` file with frontmatter
+
+### Create a Blog Post
+
+Let's create your first blog post:
+
+```bash
+mkdir src/app/blog/hello-world
+touch src/app/blog/hello-world/page.mdx
+```
+
+### Add Content
+
+Add the following to your `page.mdx`:
+
+```mdx
+---
+title: "Hello World"
+description: "My first blog post"
+date: 2025-11-16
+---
+
+import { generateBlogMetadata } from "@/lib/blog";
+import BlogJsonLd from "@/components/blog-json-ld";
+import Title from "@/components/title";
+
+export const metadata = generateBlogMetadata({
+  title: "Hello World",
+  description: "My first blog post",
+  date: "2025-11-16",
+  slug: "hello-world"
+})
+
+<Title title={metadata.title} date={metadata.date} />
+
+## Welcome!
+
+This is your first blog post. Write your content here in Markdown format!
+```
+
+## Code Syntax Highlighting
+
+Open Blog supports beautiful syntax highlighting with several features:
+
+### Highlighting Lines
+
+Use `// [!code highlight]` to highlight a single line:
+
+```javascript
+function greet(name) {
+  console.log(`Hello, ${name}!`); // [!code highlight]
+  return name;
+}
+```
+
+### Highlighting Multiple Lines
+
+Use `// [!code highlight:N]` to highlight multiple lines:
+
+```typescript
+export function calculateTotal(items) {
+  let total = 0; // [!code highlight:3]
+  items.forEach(item => {
+    total += item.price;
+  });
+  return total;
+}
+```
+
+### Focus on Code
+
+Use `// [!code focus]` to focus on important lines:
+
+```javascript
+function processData(data) {
+  const filtered = data.filter(item => item.active); // [!code focus]
+  return filtered.map(item => item.value);
+}
+```
+
+### Focus Multiple Lines
+
+Use `// [!code focus:N]` for multiple lines:
+
+```typescript
+const handleSubmit = async (formData) => {
+  const response = await fetch('/api/submit', { // [!code focus:4]
+    method: 'POST',
+    body: JSON.stringify(formData),
+    headers: { 'Content-Type': 'application/json' }
+  });
+  return response.json();
+}
+```
+
+## Deployment to Vercel
+
+### Connect Your Repository
+
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com)
+3. Click "New Project"
+4. Select your repository
+5. Click "Deploy"
+
+Vercel automatically detects Next.js projects and configures the build settings.
+
+### Set Environment Variables
+
+In your Vercel project settings:
+
+```
+Navigate to: Settings → Environment Variables
+Add all your NEXT_PUBLIC_* variables
+```
+
+Your blog will be live in seconds! 🚀
+
+## Best Practices
+
+### Writing Posts
+
+| Aspect            | Best Practice                                 |
+|-------------------|-----------------------------------------------|
+| **Frontmatter**   | Always include title, description, and date   |
+| **Slug Format**   | Use kebab-case (e.g., `my-first-post`)        |
+| **File Location** | Keep images in the same directory as page.mdx |
+| **Code Examples** | Use syntax highlighting for readability       |
+
+### SEO Tips
+
+1. Write descriptive titles (50-60 characters)
+2. Use meaningful descriptions (150-160 characters)
+3. Include semantic HTML in your content
+4. Add internal links to related posts
+5. Use proper heading hierarchy (H2, H3, H4)
+
+## Customizing Your Blog
+
+Open Blog is highly customizable. You can:
+
+### Add Custom CSS
+
+Edit `src/styles/globals.css` to match your brand:
+
+```css title="src/styles/globals.css"
+:root {
+  --foreground: rgb(0, 0, 0); /* [!code focus:2] */
+  --background: rgb(255, 255, 255);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: rgb(255, 255, 255); /* [!code focus:2] */
+    --background: rgb(0, 0, 0);
+  }
+}
+```
+
+### Modify Components
+
+Update header and footer by editing:
+
+```bash
+src/components/header.tsx
+src/components/footer.tsx
+```
+
+## Testing Your Blog
+
+Before deploying, test everything locally:
+
+```bash title="terminal"
+# Run development server
+pnpm dev
+
+# Check build
+pnpm build
+
+# Format code
+pnpm format
+
+# Run tests
+pnpm test
+```
+
+## Common Questions
+
+### How do I change the blog URL format?
+
+The URL format is determined by the directory structure. A post in `src/app/blog/my-post/page.mdx` will be available at `/blog/my-post/`.
+
+### Can I use custom React components?
+
+Yes! Import and use any component in your MDX posts:
+
+```mdx
+import CustomAlert from '@/components/custom-alert';
+
+<CustomAlert type="info">
+  This is a custom component!
+</CustomAlert>
+```
+
+### How do I preview before publishing?
+
+Use `pnpm dev` locally to see your changes in real-time. The development server hot-reloads changes instantly.
+
+## Conclusion
+
+Open Blog makes it incredibly easy to start blogging. In just a few minutes, you get:
+
+- ✅ A fully functional blog
+- ✅ SEO optimization
+- ✅ Dark mode support
+- ✅ Performance optimizations
+- ✅ Accessibility compliance
+- ✅ Automatic feeds and sitemap
+
+Now go write your first blog post and share your knowledge with the world! 📝
+
+## Resources
+
+- [Open Blog GitHub Repository](https://github.com/open-blog)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [MDX Syntax Guide](https://mdxjs.com)
+- [Vercel Deployment Guide](https://vercel.com/docs)
+
+Happy blogging! 🎉

@@ -1,0 +1,2 @@
+# Ignore all .mdx files inside the /app/blog/ directory and its subdirectories
+/src/app/blog/**/*.mdx

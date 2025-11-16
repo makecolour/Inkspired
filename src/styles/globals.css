@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+:root {
+  --code-color: #4c4f69;
+  --code-color-dark: #cdd6f4;
+  --code-background: #eff1f5;
+  --code-background-dark: #1e1e2e;
+  --code-highlight-background: #8e96aa24;
+  --code-highlight-background-dark: #c8c8ff1a;
+  --copy-button-border: #e2e2e3;
+  --copy-button-border-dark: #2e2e32;
+  --copy-button-background: #f6f6f7;
+  --copy-button-background-dark: #202127;
+  --copy-button-background-hover: #ffffff;
+  --copy-button-background-dark-hover: #1b1b1f;
+  --copy-button-text: #3c3c43c7;
+  --copy-button-text-dark: #ebebf599;
+  --lang-text: #3c3c438f;
+  --lang-text-dark: #ebebf561;
+}
+
+html {
+  min-width: 360px;
+  scrollbar-gutter: stable;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+  position: relative;
+}
+
+.blog-heading .anchor {
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  display: flex;
+  width: 28px;
+  height: 28px;
+  margin: auto;
+  border-radius: 0.375rem;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.blog-heading:hover .anchor {
+  opacity: 1;
+}
+
+/* Code */
+.prose :not(pre) > :where(code) {
+  border-radius: 8px;
+  background: var(--code-background);
+  color: var(--code-color);
+  padding: 0.2em 0.4em;
+  font-size: 85%;
+}
+
+.prose :not(pre) > :where(code)::before,
+.prose :not(pre) > :where(code)::after {
+  content: "";
+}
+
+/* End Code */
+
+[class*="language-"] .shiki code {
+  display: grid;
+}
+
+/* Highlight */
+[class*="language-"] .shiki code .highlighted {
+  border-left: 4px solid var(--code-color);
+  background-color: var(--code-highlight-background);
+  transition: background-color 0.5s;
+  display: block;
+  margin: 0 -16px;
+  padding-left: 12px;
+  padding-right: 16px;
+}
+
+/* End Highlight */
+
+/* Focus */
+[class*="language-"] .shiki.has-focused .line:not(.focused) {
+  opacity: 0.7;
+  filter: blur(0.095rem);
+  transition:
+    filter 0.35s,
+    opacity 0.35s;
+}
+
+[class*="language-"]:hover .shiki.has-focused .line:not(.focused) {
+  filter: blur(0);
+  opacity: 1;
+}
+
+/* End Focus */
+
+/* Copy Button */
+.custom-code-block > button.copy {
+  direction: ltr;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  border: 1px solid var(--copy-button-border);
+  border-radius: 4px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--copy-button-background);
+  opacity: 0;
+  cursor: pointer;
+  background-image: url("/icons/copy-icon.svg");
+  background-position: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  transition:
+    border-color 0.25s,
+    background-color 0.25s,
+    opacity 0.25s;
+}
+
+.custom-code-block:hover > button.copy {
+  opacity: 1;
+}
+
+.custom-code-block > button.copy:hover {
+  border-color: var(--copy-button-border); /* update later */
+  background-color: var(--copy-button-background-hover);
+}
+
+.custom-code-block > button.copy:hover,
+.custom-code-block > button.copy.copied {
+  border-color: var(--copy-button-border);
+  opacity: 1;
+}
+
+.custom-code-block > button.copy.copied,
+.custom-code-block > button.copy:hover.copied {
+  border-radius: 0 4px 4px 0;
+  background-color: var(--copy-button-background-hover);
+  background-image: url("/icons/copied-icon.svg");
+}
+
+.custom-code-block > button.copy.copied:before,
+.custom-code-block > button.copy:hover.copied:before {
+  position: relative;
+  top: -1px;
+  transform: translate(calc(-100% - 1px));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--copy-button-border);
+  border-right: 0;
+  border-radius: 4px 0 0 4px;
+  padding: 0 10px;
+  width: fit-content;
+  height: 40px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--copy-button-text);
+  background-color: var(--copy-button-background-hover);
+  white-space: nowrap;
+  content: "Copied";
+}
+
+/* End Copy Button */
+
+/* Language Label */
+.custom-code-block > span.lang {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  z-index: 2;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--lang-text);
+  transition:
+    color 0.4s,
+    opacity 0.4s;
+}
+
+.custom-code-block:hover > button.copy + span.lang,
+.custom-code-block > button.copy:focus + span.lang {
+  opacity: 0;
+}
+
+/* End Language Label */
+
+@media (prefers-color-scheme: dark) {
+  /* Code */
+  .prose :not(pre) > :where(code) {
+    background: var(--code-background-dark);
+    color: var(--code-color-dark);
+  }
+
+  /* End Code */
+  /* Pre */
+  .shiki,
+  .shiki span {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+
+  /* End Pre*/
+  /* Highlight */
+  [class*="language-"] .shiki code .highlighted {
+    border-left: 4px solid var(--code-color-dark);
+    background-color: var(--code-highlight-background-dark) !important;
+  }
+
+  [class*="language-"] .shiki code .highlighted span {
+    background-color: transparent !important;
+  }
+
+  /* End Highlight */
+  /* Copy Button */
+  .custom-code-block > button.copy {
+    border: 1px solid var(--copy-button-border-dark);
+    background-color: var(--copy-button-background-dark);
+  }
+
+  .custom-code-block > button.copy:hover {
+    border-color: var(--copy-button-border-dark); /* update later */
+    background-color: var(--copy-button-background-dark-hover);
+  }
+
+  .custom-code-block > button.copy:hover,
+  .custom-code-block > button.copy.copied {
+    border-color: var(--copy-button-border-dark);
+    background-color: var(--copy-button-background-dark-hover);
+  }
+
+  .custom-code-block > button.copy.copied,
+  .custom-code-block > button.copy:hover.copied {
+    background-color: var(--copy-button-background-dark-hover);
+  }
+
+  .custom-code-block > button.copy.copied:before,
+  .custom-code-block > button.copy:hover.copied:before {
+    border: 1px solid var(--copy-button-border-dark);
+    background-color: var(--copy-button-background-dark-hover);
+    color: var(--copy-button-text-dark);
+  }
+
+  /* End Copy Button */
+  /* Language Label */
+  .custom-code-block > span.lang {
+    color: var(--lang-text-dark);
+  }
+
+  /* End Language Label */
+}
