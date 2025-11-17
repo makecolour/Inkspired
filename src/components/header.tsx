@@ -10,7 +10,8 @@ export default function Header() {
   const { t } = useLanguage();
 
   return (
-    <header className="mb-8 flex flex-col gap-4 sm:mb-12 sm:gap-6">
+    <header className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-12">
+      <div className="mb-8 flex flex-col gap-4 sm:mb-12 sm:gap-6">
       <div className="flex flex-row items-center justify-between">
         <Link
           href="/"
@@ -56,7 +57,14 @@ export default function Header() {
         >
           {t.nav.blog}
         </Link>
+        <Link
+          href="/about"
+          className="text-sm font-medium text-neutral-600 transition-colors hover:text-blue-600 dark:text-neutral-400 dark:hover:text-blue-400"
+        >
+          {t.nav.about}
+        </Link>
       </nav>
+      </div>
     </header>
   );
 }

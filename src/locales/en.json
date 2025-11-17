@@ -1,7 +1,15 @@
 {
   "nav": {
     "home": "Home",
-    "blog": "Blog"
+    "blog": "Blog",
+    "about": "About"
+  },
+  "home": {
+    "hero": {
+      "title": "Welcome to Inkspired",
+      "subtitle": "A space where ideas meet expression. Blending personal writing, practical tips, and in-depth technical lectures for curious minds who love both art and technology."
+    },
+    "latestPosts": "Latest Posts"
   },
   "blog": {
     "backToBlog": "Back to blog",

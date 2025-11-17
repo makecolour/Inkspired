@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         )}
         suppressHydrationWarning
       >
-        <body className="mx-auto flex min-h-dvh max-w-2xl flex-col bg-white px-4 py-8 text-neutral-900 transition-colors sm:px-6 sm:py-12 dark:bg-neutral-950 dark:text-neutral-100">
+        <body className="flex min-h-dvh flex-col bg-white text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
           <LanguageProvider>
             <Header />
             <main className="flex-grow">{children}</main>

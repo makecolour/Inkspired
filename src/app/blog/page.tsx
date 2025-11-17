@@ -24,6 +24,7 @@ export default function BlogIndex() {
   );
 
   return (
+    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
     <div className="space-y-6 sm:space-y-8">
       <header className="space-y-3 sm:space-y-4">
         <h1 className="text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
@@ -61,6 +62,7 @@ export default function BlogIndex() {
           </article>
         ))}
       </div>
+    </div>
     </div>
   );
 }

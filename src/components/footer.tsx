@@ -37,7 +37,8 @@ export default function Footer() {
   const { t } = useLanguage();
 
   return (
-    <footer className="mt-12 border-t border-neutral-200 pt-6 sm:mt-16 sm:pt-8 dark:border-neutral-800">
+    <footer className="mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-12">
+      <div className="mt-12 border-t border-neutral-200 pt-6 sm:mt-16 sm:pt-8 dark:border-neutral-800">
       <div className="flex flex-col items-center gap-4 sm:gap-6">
         {links.length > 0 && (
           <nav className="flex flex-wrap justify-center gap-4 sm:gap-6">
@@ -60,6 +61,7 @@ export default function Footer() {
             © {COPYRIGHT_YEAR} {AUTHOR_NAME}. {t.footer.rights}
           </p>
         </div>
+      </div>
       </div>
     </footer>
   );
