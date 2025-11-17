@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/language-context";
 import { useEffect, useRef } from "react";
 import { animate, utils } from "animejs";
 import { Trophy, Bot, Zap, Rocket, Video, Mail, Briefcase, Github, Award, Star, Users, Target, ChevronRight } from "lucide-react";
+import { event } from "nextjs-google-analytics";
 import "flag-icons/css/flag-icons.min.css";
 
 const stagger = utils.stagger;
@@ -14,6 +15,14 @@ export default function AboutPage() {
   
   const heroRef = useRef<HTMLDivElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Google Analytics event tracking helper
+  const trackEvent = (eventName: string, params?: Record<string, any>) => {
+    event(eventName, {
+      category: 'About Page',
+      ...params
+    });
+  };
 
   useEffect(() => {
     // 3D Rotating Cube Grid Background
@@ -368,7 +377,7 @@ export default function AboutPage() {
       <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-24">
         
         {/* Hero Section with 3D Parallax */}
-        <div ref={heroRef} className="mb-40 min-h-[80vh] pb-20 relative" style={{ transformStyle: 'preserve-3d' }}>
+        <div ref={heroRef} className="mb-40 min-h-[80vh] pb-20 relative px-2 sm:px-0" style={{ transformStyle: 'preserve-3d' }}>
           {/* 3D Background Decorative Elements */}
           <div className="absolute inset-0 opacity-10 dark:opacity-15 pointer-events-none" style={{ transformStyle: 'preserve-3d' }}>
             <div className="parallax-layer-1 absolute top-20 right-20 w-40 h-40 border-4 border-current rotate-45" 
@@ -381,8 +390,8 @@ export default function AboutPage() {
               style={{ transformStyle: 'preserve-3d' }} />
           </div>
 
-          <div className="space-y-3 overflow-hidden relative z-10" style={{ transformStyle: 'preserve-3d' }}>
-            <h1 className="hero-line hero-parallax text-[clamp(3rem,12vw,10rem)] font-black leading-[0.8] tracking-tighter" 
+          <div className="flex flex-col overflow-visible relative z-10 pt-8" style={{ transformStyle: 'preserve-3d', gap: '0.5em' }}>
+            <h1 className="hero-line hero-parallax text-[clamp(3rem,12vw,10rem)] font-black leading-[1.1] tracking-tighter" 
               style={{ transformStyle: 'preserve-3d' }}>
               {'NGUYỄN THƯỢNG'.split('').map((char, i) => (
                 <span key={i} className="spiral-char inline-block" style={{ transformStyle: 'preserve-3d' }}>
@@ -390,7 +399,7 @@ export default function AboutPage() {
                 </span>
               ))}
             </h1>
-            <h1 className="hero-line hero-parallax text-[clamp(3rem,12vw,10rem)] font-black leading-[0.8] tracking-tighter" 
+            <h1 className="hero-line hero-parallax text-[clamp(3rem,12vw,10rem)] font-black leading-[1.5] tracking-tighter" 
               style={{ transformStyle: 'preserve-3d' }}>
               {'QUYỀN'.split('').map((char, i) => (
                 <span key={i} className="spiral-char inline-block" style={{ transformStyle: 'preserve-3d' }}>
@@ -411,15 +420,15 @@ export default function AboutPage() {
           <div className="mt-20 grid gap-1 bg-neutral-300/50 sm:grid-cols-2 lg:grid-cols-4 dark:bg-neutral-700/50 relative z-10" 
             style={{ transformStyle: 'preserve-3d' }}>
             {[
-              { label: 'Email', value: 'quyennguyen083004@gmail.com', href: 'mailto:quyennguyen083004@gmail.com' },
-              { label: 'Phone', value: '(+84) 335 610 213', href: 'tel:+84335610213' },
+              { label: 'Email', value: 'quyennguyen083004@gmail.com', href: 'mailto:quyennguyen083004@gmail.com', event: 'email_click' },
+              { label: 'Phone', value: '(+84) 335 610 213', href: 'tel:+84335610213', event: 'phone_click' },
               { label: 'Location', value: isVi ? 'Hà Nội, Việt Nam' : 'Hanoi, Vietnam' },
               { label: 'Status', value: isVi ? 'Sẵn sàng làm việc' : 'Available for Opportunities' },
             ].map((item, i) => (
               <div key={i} className="hero-line floating-card bg-[#fafafa] p-8 dark:bg-[#0a0a0a] backdrop-blur-sm" 
                 style={{ transformStyle: 'preserve-3d' }}>
                 {item.href ? (
-                  <a href={item.href} className="group block">
+                  <a href={item.href} className="group block" onClick={() => item.event && trackEvent(item.event, { label: item.label, value: item.value })}>
                     <div className="mb-3 font-mono text-[9px] uppercase tracking-[0.3em] opacity-30">{item.label}</div>
                     <div className="break-all font-mono text-sm opacity-60 transition-all group-hover:opacity-100 group-hover:translateZ-2">{item.value}</div>
                   </a>
@@ -485,7 +494,7 @@ export default function AboutPage() {
               <p className="font-mono text-2xl opacity-50 mb-8">POSitive</p>
               <p className="max-w-4xl text-lg font-light leading-relaxed opacity-70 mb-8">
                 {isVi 
-                  ? 'Giải pháp POS thế hệ mới trao quyền cho SME Việt Nam, được FPT University hỗ trợ. Xây dựng frontend Vue.js + backend Laravel với hệ thống thanh toán đa kênh (QR, tiền mặt), hóa đơn điện tử, quét mã vạch bằng camera và quản lý kho thời gian thực.'
+                  ? 'Giải pháp POS thế hệ mới trao quyền cho SME Việt Nam, được gọi vốn bởi Đại họ FPT. Xây dựng frontend Vue.js + backend Laravel với hệ thống thanh toán đa kênh (QR, tiền mặt), hóa đơn điện tử, quét mã vạch bằng camera và quản lý kho thời gian thực.'
                   : 'Next-gen POS solution empowering Vietnamese SMEs, backed by FPT University. Architected Vue.js frontend + Laravel backend with multi-payment system (QR, cash), e-invoicing, camera-based barcode scanning, and real-time inventory management.'
                 }
               </p>
@@ -596,17 +605,19 @@ export default function AboutPage() {
                   <a href="https://web-track-naver-vietnam-ai-hackatho-ecru.vercel.app/" 
                     target="_blank" 
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('project_demo_click', { project: 'Smart To-Do List', link: 'demo' })}
                     className="tech-badge inline-block border-2 border-current px-8 py-4 font-mono text-sm uppercase tracking-wider transition-all hover:bg-current hover:text-[#fafafa] dark:hover:text-[#0a0a0a] backdrop-blur-sm" 
                     style={{ transformStyle: 'preserve-3d' }}>
-                    <Rocket className="inline-block mr-2 align-middle text-blue-500 dark:text-cyan-400" size={16} />
+                    <Rocket className="inline-block mr-2 align-middle text-blue-600 dark:text-cyan-300 drop-shadow-[0_0_4px_rgba(59,130,246,0.6)] dark:drop-shadow-[0_0_4px_rgba(103,232,249,0.6)]" size={16} />
                     {isVi ? 'Xem Demo' : 'Live Demo'}
                   </a>
                   <a href="https://youtu.be/lcY3--8nCIc" 
                     target="_blank" 
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('project_video_click', { project: 'Smart To-Do List' })}
                     className="tech-badge inline-block border-2 border-current px-8 py-4 font-mono text-sm uppercase tracking-wider transition-all hover:bg-current hover:text-[#fafafa] dark:hover:text-[#0a0a0a] backdrop-blur-sm" 
                     style={{ transformStyle: 'preserve-3d' }}>
-                    <Video className="inline-block mr-2 align-middle text-red-500 dark:text-red-400" size={16} />
+                    <Video className="inline-block mr-2 align-middle text-red-600 dark:text-red-300 drop-shadow-[0_0_4px_rgba(220,38,38,0.6)] dark:drop-shadow-[0_0_4px_rgba(252,165,165,0.6)]" size={16} />
                     {isVi ? 'Video' : 'Watch Video'}
                   </a>
                 </div>
@@ -621,18 +632,18 @@ export default function AboutPage() {
                 <div className="grid sm:grid-cols-2 gap-10">
                   <div className="tech-badge border-l-4 border-blue-500 dark:border-cyan-400 pl-6" style={{ transformStyle: 'preserve-3d' }}>
                     <h4 className="font-mono text-base uppercase tracking-wider mb-4 opacity-60">
-                      <Bot className="inline-block text-blue-400 dark:text-cyan-300 mr-2 align-middle" size={18} />
+                      <Bot className="inline-block text-blue-600 dark:text-cyan-300 mr-2 align-middle drop-shadow-[0_0_3px_rgba(59,130,246,0.5)] dark:drop-shadow-[0_0_3px_rgba(103,232,249,0.5)]" size={18} />
                       {isVi ? 'Phân tích AI' : 'AI-Powered Analytics'}
                     </h4>
                     <ul className="space-y-3 opacity-70 text-base">
-                      <li className="flex gap-3"><span className="text-blue-500 dark:text-cyan-400">•</span><span>{isVi ? 'Tích hợp OpenAI GPT-4 để tối ưu công việc' : 'OpenAI GPT-4 integration for task optimization'}</span></li>
+                      <li className="flex gap-3"><span className="text-blue-500 dark:text-cyan-400">•</span><span>{isVi ? 'Tích hợp Google Gemini để tối ưu công việc' : ' Google Gemini integration for task optimization'}</span></li>
                       <li className="flex gap-3"><span className="text-blue-500 dark:text-cyan-400">•</span><span>{isVi ? 'Nhận dạng mô hình trì hoãn (điểm 0.00-9.99)' : 'Procrastination pattern recognition (0.00-9.99 scoring)'}</span></li>
                       <li className="flex gap-3"><span className="text-blue-500 dark:text-cyan-400">•</span><span>{isVi ? 'Can thiệp hành vi và lên lịch thông minh' : 'Behavioral intervention and smart scheduling'}</span></li>
                     </ul>
                   </div>
                   <div className="tech-badge border-l-4 border-purple-500 dark:border-blue-500 pl-6" style={{ transformStyle: 'preserve-3d' }}>
                     <h4 className="font-mono text-base uppercase tracking-wider mb-4 opacity-60">
-                      <Zap className="inline-block text-purple-400 dark:text-blue-300 mr-2 align-middle" size={18} />
+                      <Zap className="inline-block text-purple-600 dark:text-blue-300 mr-2 align-middle drop-shadow-[0_0_3px_rgba(147,51,234,0.5)] dark:drop-shadow-[0_0_3px_rgba(147,197,253,0.5)]" size={18} />
                       {isVi ? 'Tính năng nâng cao' : 'Advanced Features'}
                     </h4>
                     <ul className="space-y-3 opacity-70 text-base">
@@ -645,7 +656,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="flex flex-wrap gap-3">
-                {['React 19', 'TypeScript', 'Laravel 12', 'Vite', 'TailwindCSS', 'OpenAI GPT-4', 'MySQL', 'Redis', 'Pusher'].map((tech, i) => (
+                {['React 19', 'TypeScript', 'Laravel 12', 'Vite', 'TailwindCSS', 'Google Gemini', 'MySQL', 'Redis', 'Pusher'].map((tech, i) => (
                   <span key={i} className="tech-badge px-4 py-2 border-2 border-current/20 text-sm font-mono opacity-40 hover:opacity-100 transition-opacity backdrop-blur-sm" 
                     style={{ transformStyle: 'preserve-3d' }}>
                     {tech}
@@ -678,7 +689,7 @@ export default function AboutPage() {
               {
                 name: 'POSitive',
                 desc: isVi ? 'Giải pháp POS thế hệ mới cho SME Việt Nam' : 'Next-gen POS solution empowering Vietnamese SMEs',
-                tech: ['Vue.js', 'Laravel', 'PHP', 'Real-time'],
+                tech: ['Vue.js', 'Laravel', 'PHP', 'MySQL', 'Redis'],
                 color: 'from-green-500 to-emerald-500 dark:from-green-400 dark:to-emerald-400',
                 github: 'https://github.com/makecolour/POSitive'
               },
@@ -692,28 +703,28 @@ export default function AboutPage() {
               {
                 name: 'Clowndinary',
                 desc: isVi ? 'Trình tải lên đa CDN cho TDA Global' : 'Multi-CDN media uploader for TDA Global',
-                tech: ['JavaScript', 'EJS', 'Cloudinary', 'Bunny Storage'],
+                tech: ['JavaScript', 'EJS', 'MySQL', 'Cloudinary', 'Bunny Storage'],
                 color: 'from-orange-500 to-red-500 dark:from-orange-400 dark:to-red-400',
                 github: 'https://github.com/makecolour/Clowndinary'
               },
               {
                 name: 'TrustScore',
                 desc: isVi ? 'Hệ thống quản lý tin cậy dựa trên AI' : 'AI-powered trust management system',
-                tech: ['Java', 'Spring Boot', 'Knowledge Graph', 'LLM'],
+                tech: ['Java', 'Spring Boot', 'MySQL', 'Knowledge Graph', 'LLM'],
                 color: 'from-indigo-500 to-purple-500 dark:from-indigo-400 dark:to-purple-400',
                 github: 'https://github.com/makecolour/TrustScore'
               },
               {
                 name: 'Voyagenius',
                 desc: isVi ? 'Giải pháp quản lý du lịch thông minh' : 'Intelligent travel management solution',
-                tech: ['PHP', 'TypeScript', 'Laravel', 'Vue.js'],
+                tech: ['Laravel', 'Vue.js', 'MySQL', 'Redis'],
                 color: 'from-blue-500 to-cyan-500 dark:from-blue-400 dark:to-cyan-400',
                 github: 'https://github.com/makecolour/Voyagenius'
               },
               {
                 name: 'Calendros',
-                desc: isVi ? 'Ứng dụng lịch & lên lịch toàn diện' : 'Comprehensive calendar & scheduling app',
-                tech: ['PHP', 'Laravel', 'Blade', 'MySQL'],
+                desc: isVi ? 'Ứng dụng di động lịch & lên lịch Android' : 'Android mobile calendar & scheduling app',
+                tech: ['Java', 'Android', 'Laravel', 'MySQL'],
                 color: 'from-pink-500 to-rose-500 dark:from-pink-400 dark:to-rose-400',
                 github: 'https://github.com/makecolour/Calendros',
                 github2: 'https://github.com/makecolour/Calendros_app'
@@ -722,9 +733,7 @@ export default function AboutPage() {
                 name: 'Seafood Merge',
                 desc: isVi ? 'Game casual 2D - 1K+ lượt tải' : '2D Casual Game - 1K+ downloads',
                 tech: ['Unity', 'C#', 'Google Play'],
-                color: 'from-teal-500 to-green-500 dark:from-teal-400 dark:to-green-400',
-                link: 'https://play.google.com/store/apps/details?id=com.KISVietnam.SeafoodMerge'
-              },
+                color: 'from-teal-500 to-green-500 dark:from-teal-400 dark:to-green-400'              },
             ].map((project, idx) => (
               <div key={idx} className="stagger-item floating-card group" style={{ transformStyle: 'preserve-3d' }}>
                 <div className={`border-2 border-current/10 p-8 backdrop-blur-sm hover:border-current/30 transition-all duration-500 bg-gradient-to-br ${project.color} bg-opacity-5 dark:bg-opacity-10 h-full flex flex-col`}>
@@ -735,8 +744,9 @@ export default function AboutPage() {
                       <a href={project.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
+                        onClick={() => trackEvent('project_demo_click', { project: project.name })}
                         className="tech-badge inline-flex items-center gap-2 border-2 border-current px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all hover:bg-current hover:text-[#fafafa] dark:hover:text-[#0a0a0a]">
-                        <Rocket size={14} className="text-blue-500 dark:text-cyan-400" />
+                        <Rocket size={14} className="text-blue-600 dark:text-cyan-300 drop-shadow-[0_0_3px_rgba(59,130,246,0.5)] dark:drop-shadow-[0_0_3px_rgba(103,232,249,0.5)]" />
                         {isVi ? 'Demo' : 'Live Demo'}
                       </a>
                     )}
@@ -744,8 +754,9 @@ export default function AboutPage() {
                       <a href={project.github} 
                         target="_blank" 
                         rel="noopener noreferrer"
+                        onClick={() => trackEvent('github_click', { project: project.name, repo: 'main' })}
                         className="tech-badge inline-flex items-center gap-2 border-2 border-current px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all hover:bg-current hover:text-[#fafafa] dark:hover:text-[#0a0a0a]">
-                        <Github size={14} className="text-purple-600 dark:text-purple-400" />
+                        <Github size={14} className="text-purple-700 dark:text-purple-300 drop-shadow-[0_0_3px_rgba(147,51,234,0.5)] dark:drop-shadow-[0_0_3px_rgba(216,180,254,0.5)]" />
                         {isVi ? 'Mã nguồn' : 'Code'}
                       </a>
                     )}
@@ -753,8 +764,9 @@ export default function AboutPage() {
                       <a href={project.github2} 
                         target="_blank" 
                         rel="noopener noreferrer"
+                        onClick={() => trackEvent('github_click', { project: project.name, repo: 'app' })}
                         className="tech-badge inline-flex items-center gap-2 border-2 border-current px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all hover:bg-current hover:text-[#fafafa] dark:hover:text-[#0a0a0a]">
-                        <Github size={14} className="text-pink-600 dark:text-pink-400" />
+                        <Github size={14} className="text-pink-700 dark:text-pink-300 drop-shadow-[0_0_3px_rgba(219,39,119,0.5)] dark:drop-shadow-[0_0_3px_rgba(249,168,212,0.5)]" />
                         {isVi ? 'App' : 'App'}
                       </a>
                     )}
@@ -848,7 +860,7 @@ export default function AboutPage() {
                 title: isVi ? 'Cố vấn kỹ thuật Coding Inspiration' : 'Coding Inspiration Technical Advisor',
                 org: isVi ? 'CLB Lập trình FPT' : 'FPT Programming Club',
                 year: '2023',
-                desc: isVi ? 'Cố vấn kỹ thuật cho sinh viên năm nhất' : 'Technical advisor for freshmen',
+                desc: isVi ? 'Cố vấn kỹ thuật' : 'Technical advisor',
                 color: 'from-purple-500 to-pink-500 dark:from-purple-400 dark:to-pink-400'
               }
             ].map((ach, idx) => {
@@ -919,7 +931,7 @@ export default function AboutPage() {
                 icon: 'tech',
                 role: isVi ? 'Cố vấn kỹ thuật' : 'Technical Mentor',
                 org: 'Vietnam Robotics Challenge',
-                impact: isVi ? 'Hướng dẫn sinh viên về Arduino & C++' : 'Mentored students in Arduino & C++',
+                impact: isVi ? 'Hướng dẫn học sinh về Arduino & C++' : 'Mentored students in Arduino & C++',
                 color: 'from-blue-500 to-cyan-500 dark:from-blue-400 dark:to-cyan-400'
               },
               {
@@ -1016,33 +1028,37 @@ export default function AboutPage() {
               </p>
               <div className="flex gap-6 justify-center flex-wrap">
                 <a href="mailto:quyennguyen083004@gmail.com" 
+                  onClick={() => trackEvent('cta_email_click', { location: 'footer' })}
                   className="tech-badge inline-block border-4 border-current px-12 py-5 font-mono text-base uppercase tracking-wider transition-all hover:bg-current hover:text-[#fafafa] dark:hover:text-[#0a0a0a] backdrop-blur-sm" 
                   style={{ transformStyle: 'preserve-3d' }}>
-                  <Mail className="inline-block mr-3 align-middle text-red-500 dark:text-red-400" size={20} />
+                  <Mail className="inline-block mr-3 align-middle text-red-600 dark:text-red-300 drop-shadow-[0_0_4px_rgba(220,38,38,0.6)] dark:drop-shadow-[0_0_4px_rgba(252,165,165,0.6)]" size={20} />
                   {isVi ? 'Gửi email' : 'Send Email'}
                 </a>
                 <a href="https://www.linkedin.com/in/gaslighter/" 
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('social_link_click', { platform: 'LinkedIn', location: 'footer' })}
                   className="tech-badge inline-block border-4 border-current px-12 py-5 font-mono text-base uppercase tracking-wider transition-all hover:bg-current hover:text-[#fafafa] dark:hover:text-[#0a0a0a] backdrop-blur-sm" 
                   style={{ transformStyle: 'preserve-3d' }}>
-                  <Briefcase className="inline-block mr-3 align-middle text-blue-500 dark:text-blue-400" size={20} />
+                  <Briefcase className="inline-block mr-3 align-middle text-blue-600 dark:text-blue-300 drop-shadow-[0_0_4px_rgba(59,130,246,0.6)] dark:drop-shadow-[0_0_4px_rgba(147,197,253,0.6)]" size={20} />
                   LinkedIn
                 </a>
                 <a href="https://github.com/makecolour" 
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('social_link_click', { platform: 'GitHub', location: 'footer' })}
                   className="tech-badge inline-block border-4 border-current px-12 py-5 font-mono text-base uppercase tracking-wider transition-all hover:bg-current hover:text-[#fafafa] dark:hover:text-[#0a0a0a] backdrop-blur-sm" 
                   style={{ transformStyle: 'preserve-3d' }}>
-                  <Github className="inline-block mr-3 align-middle text-purple-500 dark:text-purple-400" size={20} />
+                  <Github className="inline-block mr-3 align-middle text-purple-700 dark:text-purple-300 drop-shadow-[0_0_4px_rgba(147,51,234,0.6)] dark:drop-shadow-[0_0_4px_rgba(216,180,254,0.6)]" size={20} />
                   GitHub
                 </a>
                 <a href="https://www.topcv.vn/xem-cv/BAUABwBXDlEFDgAAUQJcV1QDVgcBUFVVUQZTBw9f76" 
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('cv_view_click', { platform: 'TopCV' })}
                   className="tech-badge inline-block border-4 border-current px-12 py-5 font-mono text-base uppercase tracking-wider transition-all hover:bg-current hover:text-[#fafafa] dark:hover:text-[#0a0a0a] backdrop-blur-sm" 
                   style={{ transformStyle: 'preserve-3d' }}>
-                  <Briefcase className="inline-block mr-3 align-middle text-green-500 dark:text-green-400" size={20} />
+                  <Briefcase className="inline-block mr-3 align-middle text-green-600 dark:text-green-300 drop-shadow-[0_0_4px_rgba(22,163,74,0.6)] dark:drop-shadow-[0_0_4px_rgba(134,239,172,0.6)]" size={20} />
                   {isVi ? 'Xem CV' : 'View CV'}
                 </a>
               </div>

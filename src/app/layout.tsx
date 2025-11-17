@@ -3,7 +3,6 @@ import "@/styles/globals.css";
 import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { ViewTransitions } from "next-view-transitions";
-import { Analytics } from "@vercel/analytics/react";
 
 import { sans } from "@/config/fonts";
 import {
@@ -15,6 +14,7 @@ import {
 } from "@/config/site";
 import { clx } from "@/lib/utils";
 import { LanguageProvider } from "@/contexts/language-context";
+import { AnalyticsWrapper } from "@/components/analytics-wrapper";
 
 import Header from "../components/header";
 import Footer from "../components/footer";
@@ -71,12 +71,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         suppressHydrationWarning
       >
         <body className="flex min-h-dvh flex-col bg-white text-neutral-900 transition-colors dark:bg-neutral-950 dark:text-neutral-100">
+          <AnalyticsWrapper />
           <LanguageProvider>
             <Header />
             <main className="flex-grow">{children}</main>
             <Footer />
           </LanguageProvider>
-          <Analytics />
         </body>
       </html>
     </ViewTransitions>
