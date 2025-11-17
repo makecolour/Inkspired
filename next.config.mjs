@@ -14,6 +14,7 @@ const nextConfig = {
       },
     ],
   },
+  devIndicators: false,
   async redirects() {
     return [
       // Redirect /blog/* (no trailing slash) to /blog/*/

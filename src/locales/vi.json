@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Trang chủ",
+    "blog": "Blog"
+  },
+  "blog": {
+    "backToBlog": "Quay lại blog",
+    "readMore": "Đọc thêm",
+    "publishedOn": "Xuất bản vào",
+    "noPosts": "Không tìm thấy bài viết nào.",
+    "allPosts": "Tất cả bài viết"
+  },
+  "footer": {
+    "builtWith": "Được xây dựng bằng",
+    "and": "và",
+    "rights": "Bản quyền thuộc về."
+  },
+  "notFound": {
+    "title": "404 - Không tìm thấy trang",
+    "message": "Xin lỗi, trang bạn đang tìm kiếm không tồn tại.",
+    "backHome": "Quay lại Trang chủ"
+  },
+  "language": {
+    "switch": "Đổi ngôn ngữ",
+    "vietnamese": "Tiếng Việt",
+    "english": "English"
+  }
+}

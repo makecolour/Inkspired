@@ -17,6 +17,7 @@ import {
 
 import { slugify } from "@/lib/utils";
 import CopyButton from "@/components/copy-button";
+import BlogPostLayout from "@/components/blog-post-layout";
 
 type AnchorProps = ComponentPropsWithoutRef<"a">;
 type HeadingProps = ComponentPropsWithoutRef<"h1">;
@@ -135,6 +136,7 @@ async function Pre({ children, ...props }: HtmlHTMLAttributes<HTMLPreElement>) {
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
+    wrapper: BlogPostLayout,
     h2: createHeading(2),
     h3: createHeading(3),
     h4: createHeading(4),

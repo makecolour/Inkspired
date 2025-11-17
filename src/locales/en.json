@@ -1,0 +1,28 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog"
+  },
+  "blog": {
+    "backToBlog": "Back to blog",
+    "readMore": "Read more",
+    "publishedOn": "Published on",
+    "noPosts": "No blog posts found.",
+    "allPosts": "All Posts"
+  },
+  "footer": {
+    "builtWith": "Built with",
+    "and": "and",
+    "rights": "All rights reserved."
+  },
+  "notFound": {
+    "title": "404 - Page Not Found",
+    "message": "Sorry, the page you're looking for doesn't exist.",
+    "backHome": "Back to Home"
+  },
+  "language": {
+    "switch": "Switch language",
+    "vietnamese": "Tiếng Việt",
+    "english": "English"
+  }
+}

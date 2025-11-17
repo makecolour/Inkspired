@@ -9,6 +9,8 @@ interface Metadata {
   title: string;
   description: string;
   date: string | Date;
+  titleVi?: string;
+  descriptionVi?: string;
 }
 
 interface FrontMatterParseResult {
@@ -39,6 +41,8 @@ const readMDXFile = (filePath: string): FrontMatterParseResult => {
       title: data.title,
       description: data.description,
       date: data.date,
+      titleVi: data.titleVi,
+      descriptionVi: data.descriptionVi,
     },
   };
 };
@@ -68,11 +72,15 @@ export const generateBlogMetadata = ({
   description,
   date,
   slug,
+  titleVi,
+  descriptionVi,
 }: {
   title: string;
   description: string;
   date: string | Date;
   slug: string;
+  titleVi?: string;
+  descriptionVi?: string;
 }) => {
   const url = `${SITE_URL}blog/${slug}`;
   const dateStr = date instanceof Date ? date.toISOString().split("T")[0] : date;
@@ -81,8 +89,10 @@ export const generateBlogMetadata = ({
 
   return {
     title,
+    titleVi,
     date: publishedTime,
     description,
+    descriptionVi,
     alternates: {
       canonical: `/blog/${slug}/`,
     },

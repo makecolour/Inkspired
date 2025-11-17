@@ -1,0 +1,230 @@
+---
+title: "Welcome to Inkspired - A Developer's Journey"
+titleVi: "Chào mừng đến với Inkspired - Hành trình của một Developer"
+description: "My personal blog about web development, programming, and tech insights"
+descriptionVi: "Blog cá nhân của tôi về phát triển web, lập trình và những hiểu biết về công nghệ"
+date: 2025-11-17
+---
+
+import { generateBlogMetadata } from "../../../lib/blog";
+import BlogJsonLd from "../../../components/blog-json-ld";
+import Title from "../../../components/title";
+import { T, P, H2, H3, Bilingual } from "../../../components/bilingual-content";
+
+export const metadata = generateBlogMetadata({
+  title: "Welcome to Inkspired - A Developer's Journey",
+  titleVi: "Chào mừng đến với Inkspired - Hành trình của một Developer",
+  description: "My personal blog about web development, programming, and tech insights",
+  descriptionVi: "Blog cá nhân của tôi về phát triển web, lập trình và những hiểu biết về công nghệ",
+  date: "2025-11-17",
+  slug: "welcome-to-inkspired-bilingual"
+})
+
+<BlogJsonLd
+  url={metadata.openGraph.url}
+  title={metadata.title}
+  description={metadata.description}
+  authorName="Montserrat"
+  publishDate={new Date(metadata.openGraph.publishedTime).toISOString()}
+  imageUrl={metadata.openGraph.images?.[0]?.url}
+/>
+
+<Bilingual
+  en={<Title title={metadata.title} date={metadata.date} />}
+  vi={<Title title={metadata.titleVi} date={metadata.date} />}
+/>
+
+<H2 en="Introduction" vi="Giới thiệu" />
+
+<P
+  en={
+    <p>
+      Hello! Welcome to <strong>Inkspired</strong>, my personal corner of the internet where I share my journey as a developer. 
+      This blog is where technology meets creativity, and where I document my learnings, experiments, and insights from the world of software development.
+    </p>
+  }
+  vi={
+    <p>
+      Xin chào! Chào mừng bạn đến với <strong>Inkspired</strong>, góc nhỏ của tôi trên internet nơi tôi chia sẻ hành trình của mình với tư cách là một developer.
+      Blog này là nơi công nghệ gặp gỡ sáng tạo, và nơi tôi ghi lại những điều đã học, thử nghiệm và hiểu biết từ thế giới phát triển phần mềm.
+    </p>
+  }
+/>
+
+<H2 en="What You'll Find Here" vi="Bạn sẽ tìm thấy gì ở đây" />
+
+<P
+  en={
+    <p>
+      This blog covers a wide range of topics in modern web development and software engineering. Here's what you can expect:
+    </p>
+  }
+  vi={
+    <p>
+      Blog này bao gồm nhiều chủ đề trong phát triển web hiện đại và kỹ thuật phần mềm. Đây là những gì bạn có thể mong đợi:
+    </p>
+  }
+/>
+
+<H3 en="Technical Deep Dives" vi="Phân tích kỹ thuật chuyên sâu" />
+
+<P
+  en={
+    <p>
+      I love exploring how things work under the hood. Whether it's understanding React Server Components, 
+      diving into TypeScript type systems, or optimizing Next.js applications, I'll share detailed analyses 
+      and practical insights from my experiences.
+    </p>
+  }
+  vi={
+    <p>
+      Tôi thích khám phá cách mọi thứ hoạt động bên trong. Cho dù đó là hiểu về React Server Components,
+      đào sâu vào hệ thống kiểu TypeScript, hay tối ưu hóa ứng dụng Next.js, tôi sẽ chia sẻ những phân tích chi tiết
+      và hiểu biết thực tế từ kinh nghiệm của mình.
+    </p>
+  }
+/>
+
+<H3 en="Developer Workflows" vi="Quy trình làm việc của Developer" />
+
+<P
+  en={
+    <p>
+      Productivity is key in software development. I'll share my favorite tools, techniques, and workflows 
+      that help me stay efficient and produce quality code. From VS Code extensions to terminal setups, 
+      Git workflows to debugging strategies.
+    </p>
+  }
+  vi={
+    <p>
+      Năng suất là chìa khóa trong phát triển phần mềm. Tôi sẽ chia sẻ các công cụ, kỹ thuật và quy trình làm việc yêu thích
+      giúp tôi duy trì hiệu quả và tạo ra code chất lượng. Từ các extension VS Code đến cài đặt terminal,
+      quy trình Git đến chiến lược debug.
+    </p>
+  }
+/>
+
+<H3 en="Best Practices & Patterns" vi="Best Practices & Patterns" />
+
+<P
+  en={
+    <p>
+      Writing clean, maintainable code is an art. I'll discuss design patterns, architectural decisions, 
+      testing strategies, and code organization techniques that I've found valuable in building scalable applications.
+    </p>
+  }
+  vi={
+    <p>
+      Viết code sạch, dễ bảo trì là một nghệ thuật. Tôi sẽ thảo luận về các design pattern, quyết định kiến trúc,
+      chiến lược testing và kỹ thuật tổ chức code mà tôi thấy có giá trị trong việc xây dựng các ứng dụng có khả năng mở rộng.
+    </p>
+  }
+/>
+
+<H2 en="Why Inkspired?" vi="Tại sao là Inkspired?" />
+
+<P
+  en={
+    <p>
+      The name "Inkspired" represents the blend of inspiration and creation—like ink flowing onto paper. 
+      Every line of code we write is an expression of creativity, problem-solving, and continuous learning. 
+      This blog is my way of sharing that inspiration with the developer community.
+    </p>
+  }
+  vi={
+    <p>
+      Cái tên "Inkspired" đại diện cho sự kết hợp giữa cảm hứng và sáng tạo—như mực chảy trên giấy.
+      Mỗi dòng code chúng ta viết là một biểu hiện của sự sáng tạo, giải quyết vấn đề và học hỏi liên tục.
+      Blog này là cách của tôi để chia sẻ cảm hứng đó với cộng đồng developer.
+    </p>
+  }
+/>
+
+<H2 en="About the Tech Stack" vi="Về Tech Stack" />
+
+<P
+  en={
+    <p>
+      This blog itself is a showcase of modern web technologies. Built with <strong>Next.js 15</strong>, 
+      styled with <strong>Tailwind CSS</strong>, and powered by <strong>MDX</strong> for rich content, 
+      it demonstrates the capabilities of cutting-edge web development tools.
+    </p>
+  }
+  vi={
+    <p>
+      Chính blog này là một showcase của các công nghệ web hiện đại. Được xây dựng bằng <strong>Next.js 15</strong>,
+      styling với <strong>Tailwind CSS</strong>, và sử dụng <strong>MDX</strong> cho nội dung phong phú,
+      nó thể hiện khả năng của các công cụ phát triển web tiên tiến.
+    </p>
+  }
+/>
+
+<P
+  en={
+    <p>
+      Key features include:
+    </p>
+  }
+  vi={
+    <p>
+      Các tính năng chính bao gồm:
+    </p>
+  }
+/>
+
+<Bilingual
+  en={
+    <ul>
+      <li>⚡ Blazing-fast performance with Next.js App Router</li>
+      <li>🎨 Beautiful, responsive design with Tailwind CSS</li>
+      <li>📝 MDX-powered blog posts with syntax highlighting</li>
+      <li>🌐 Bilingual support (English & Vietnamese)</li>
+      <li>🌙 System-based dark mode</li>
+      <li>📱 Mobile-first responsive design</li>
+    </ul>
+  }
+  vi={
+    <ul>
+      <li>⚡ Hiệu suất cực nhanh với Next.js App Router</li>
+      <li>🎨 Thiết kế đẹp mắt, responsive với Tailwind CSS</li>
+      <li>📝 Bài viết blog powered by MDX với syntax highlighting</li>
+      <li>🌐 Hỗ trợ song ngữ (Tiếng Anh & Tiếng Việt)</li>
+      <li>🌙 Dark mode dựa trên hệ thống</li>
+      <li>📱 Thiết kế responsive ưu tiên mobile</li>
+    </ul>
+  }
+/>
+
+<H2 en="Let's Connect" vi="Hãy kết nối" />
+
+<P
+  en={
+    <p>
+      I'm always excited to connect with fellow developers and tech enthusiasts. Feel free to reach out on 
+      <a href="https://github.com/makecolour" target="_blank" rel="noopener noreferrer"> GitHub</a> or 
+      <a href="https://www.linkedin.com/in/gaslighter/" target="_blank" rel="noopener noreferrer"> LinkedIn</a>. 
+      Let's learn and grow together!
+    </p>
+  }
+  vi={
+    <p>
+      Tôi luôn vui mừng được kết nối với các developer và những người đam mê công nghệ. Hãy liên hệ với tôi trên
+      <a href="https://github.com/makecolour" target="_blank" rel="noopener noreferrer"> GitHub</a> hoặc
+      <a href="https://www.linkedin.com/in/gaslighter/" target="_blank" rel="noopener noreferrer"> LinkedIn</a>.
+      Hãy cùng học hỏi và phát triển!
+    </p>
+  }
+/>
+
+<P
+  en={
+    <p>
+      Thanks for stopping by, and happy coding! 🚀
+    </p>
+  }
+  vi={
+    <p>
+      Cảm ơn bạn đã ghé thăm, và chúc bạn code vui vẻ! 🚀
+    </p>
+  }
+/>
