@@ -1,22 +1,23 @@
-# Open Blog
+# Inkspired Blog
 
 <div align="center">
     <a href="CONTRIBUTING.md#creating-a-pull-request"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
     <a href="https://github.com/prettier/prettier"><img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg"></a>
     <a href="#license"><img src="https://img.shields.io/github/license/sourcerer-io/hall-of-fame.svg?colorB=ff0000"></a>
     <a href="https://vitest.dev/"><img src="https://img.shields.io/badge/tested_with-vitest-6E511F.svg" alt="Tested with Vitest"></a>
-    <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fdvbtrung2302%2Fopen-blog%2Ftree%2Fmaster"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
+    <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmakecolour%2FInkspired"><img src="https://vercel.com/button" alt="Deploy with Vercel"/></a>
 </div>
 
-A minimal, modern blog platform built with Next.js, Tailwind CSS, and MDX. Perfect for creators, developers, and writers
-who want a lightweight, customizable blogging solution.
+A modern, bilingual blog platform built with Next.js, Tailwind CSS, and MDX. Perfect for creators, developers, and writers
+who want a lightweight, customizable blogging solution with Vietnamese and English language support.
 
-Just write your blog in Markdown format and ship it to everyone on the internet! ✨
+Write your blog in Markdown with bilingual content support and ship it to everyone on the internet! ✨
 
 - **Framework**: [Next.js 15](https://nextjs.org/) with App Router
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
 - **Content**: MDX with metadata
+- **Languages**: Vietnamese & English with dynamic switching
 - **Package Manager**: [pnpm](https://pnpm.io/)
 
 <div align="center">
@@ -27,6 +28,10 @@ Just write your blog in Markdown format and ship it to everyone on the internet!
 ## Features
 
 - 📝 Write posts in MDX format with YAML frontmatter
+- 🌐 **Bilingual support** - Vietnamese and English with language switcher
+- 🔄 **Smart language detection** - Auto-detects browser language preference
+- 💾 **Language persistence** - Saves language choice to localStorage
+- 📄 **Multilingual blog posts** - Support for tagged bilingual content in a single file
 - ⚡ Fast performance with Next.js - all static HTML files, **100% Core Web Vitals**
 - 🖼️ Dynamic Open Graph image generation
 - 📰 Auto-generated RSS and Atom feeds
@@ -34,7 +39,7 @@ Just write your blog in Markdown format and ship it to everyone on the internet!
 - 🔍 SEO-friendly with structured data (JSON-LD) and semantic HTML
 - ♿ WCAG 2.2 accessibility compliant with proper semantic markup
 - 🎨 Customizable author branding and social links
-- 📱 Responsive lightweight design with light mode and dark mode based on system preference
+- 📱 Responsive lightweight design with system-based dark mode
 
 ## Getting Started
 
@@ -107,12 +112,93 @@ pnpm format
 pnpm format:check
 ```
 
-## Creating Blog Posts
+## Project Structure
 
-1. Create a new directory in `app/blog/`:
+```
+Inkspired/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── blog/              # Blog posts directory
+│   │   │   ├── [slug]/        # Dynamic blog post folders
+│   │   │   │   └── page.mdx   # Individual blog post content
+│   │   │   ├── layout.tsx     # Blog layout wrapper
+│   │   │   └── page.tsx       # Blog index page
+│   │   ├── layout.tsx         # Root layout with LanguageProvider
+│   │   ├── page.tsx           # Homepage
+│   │   └── not-found.tsx      # 404 page
+│   ├── components/            # React components
+│   │   ├── bilingual-content.tsx   # Bilingual content components
+│   │   ├── blog-post-layout.tsx    # Blog post wrapper with "Back" link
+│   │   ├── footer.tsx              # Footer with translations
+│   │   ├── header.tsx              # Header with language switcher
+│   │   ├── language-switcher.tsx   # Language toggle button
+│   │   └── ...                     # Other components
+│   ├── contexts/              # React contexts
+│   │   └── language-context.tsx    # Language state management
+│   ├── locales/               # Translation files
+│   │   ├── en.json            # English UI translations
+│   │   └── vi.json            # Vietnamese UI translations
+│   ├── lib/                   # Utility functions
+│   │   ├── blog.ts            # Blog metadata helpers
+│   │   └── utils.ts           # Common utilities
+│   └── styles/                # Global styles
+│       └── globals.css        # Tailwind CSS imports
+├── mdx-components.tsx         # MDX component overrides
+└── .env.local                 # Environment variables
+```
+
+## Language System Architecture
+
+### UI Translations
+
+All UI strings are stored in JSON files (`src/locales/en.json` and `src/locales/vi.json`). Components use the `useLanguage()` hook to access translations:
+
+```tsx
+import { useLanguage } from "@/contexts/language-context";
+
+function MyComponent() {
+  const { t } = useLanguage();
+  return <button>{t.nav.home}</button>;
+}
+```
+
+### Language Context
+
+The `LanguageProvider` wraps the entire app and provides:
+- Current language state (`en` | `vi`)
+- Language switcher function
+- Translations object
+- Auto-detection of browser language
+- LocalStorage persistence
+
+### Bilingual Blog Content
+
+Blog posts can include content in both languages using tagged components. The content automatically switches based on the selected language without page reload.
+
+## Development Commands
+
+```bash
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
+
+# Lint code
+pnpm lint
+
+# Format code
+pnpm format
+
+### Single-Language Posts
+
+1. Create a new directory in `src/app/blog/`:
 
    ```bash
-   mkdir app/blog/my-first-post
+   mkdir src/app/blog/my-first-post
    ```
 
 2. Add a `page.mdx` file with frontmatter:
@@ -129,8 +215,53 @@ pnpm format:check
 
 3. The post will automatically appear on your blog at `/blog/my-first-post/`
 
-> **📚 Check out the [example blog post](/blog/building-blog-with-open-blog/) for a complete step-by-step guide on
-creating your first post!**
+### Bilingual Posts
+
+For posts with Vietnamese and English content, use the bilingual components:
+
+1. Add Vietnamese metadata to frontmatter:
+
+   ```mdx
+   ---
+   title: "My First Post"
+   titleVi: "Bài viết đầu tiên của tôi"
+   description: "A brief description of the post"
+   descriptionVi: "Mô tả ngắn gọn về bài viết"
+   date: 2024-01-15
+   ---
+   ```
+
+2. Import bilingual components:
+
+   ```mdx
+   import { T, P, H2, H3, Bilingual } from "@/components/bilingual-content";
+   ```
+
+3. Use components for bilingual content:
+
+   ```mdx
+   <H2 en="Introduction" vi="Giới thiệu" />
+
+   <P
+     en={<p>This is English content.</p>}
+     vi={<p>Đây là nội dung tiếng Việt.</p>}
+   />
+
+   <Bilingual
+     en={<ul><li>English list item</li></ul>}
+     vi={<ul><li>Mục danh sách tiếng Việt</li></ul>}
+   />
+   ```
+
+> **📚 Check out the [bilingual example post](/blog/welcome-to-inkspired-bilingual/) for a complete demonstration!**
+
+### Bilingual Components Reference
+
+- `<T>` - Inline bilingual text
+- `<P>` - Bilingual paragraphs
+- `<H2>`, `<H3>`, `<H4>` - Bilingual headings
+- `<Bilingual>` - Generic bilingual wrapper for any content
+- `<BilingualSection>` - For complex multi-element sections
 
 ### Syntax Highlighting
 

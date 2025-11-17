@@ -18,3 +18,7 @@ export const TWITTER_HANDLE = process.env.NEXT_PUBLIC_TWITTER_HANDLE || "";
 
 // Copyright
 export const COPYRIGHT_YEAR = process.env.NEXT_PUBLIC_COPYRIGHT_YEAR || "2025";
+
+// Supported Languages
+export const LOCALES = ["en", "vi"] as const;
+export type Locale = (typeof LOCALES)[number];
