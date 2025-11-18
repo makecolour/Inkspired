@@ -21,8 +21,8 @@ export default function HomeClient({ posts }: HomeClientProps) {
         </h1>
         <p className="text-base leading-relaxed text-neutral-600 sm:text-lg dark:text-neutral-400 md:text-xl">
           {language === "en" 
-            ? "A space where ideas meet expression. Blending personal writing, practical tips, and in-depth technical lectures for curious minds who love both art and technology."
-            : "Không gian nơi ý tưởng gặp gỡ cách diễn đạt. Kết hợp viết lách cá nhân, mẹo thực tế và các bài giảng kỹ thuật chuyên sâu dành cho những tâm hồn tò mò yêu thích cả nghệ thuật và công nghệ."
+            ? "This is simply a space to write. Sometimes it’s about tech, sometimes about literature or life, and sometimes just thoughts worth noting, or maybe not."
+            : "Đây đơn giản là một không gian để viết. Đôi khi về công nghệ, đôi khi về văn học hoặc cuộc sống, và đôi khi chỉ là những suy nghĩ đáng để ghi lại, hoặc có thể không."
           }
         </p>
       </section>
