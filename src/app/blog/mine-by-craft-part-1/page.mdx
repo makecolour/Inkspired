@@ -1,0 +1,228 @@
+---
+title: "Mine & Craft Pt.1: The Scrap Server Adventure"
+titleVi: "Mine & Craft P.1: Chuyện Cậu Sinh Viên Và Cỗ Máy Thời Gian"
+description: "A cozy slice-of-life story about resetting my career, finding joy in old hardware, and the little adventure of bringing internet back to the university lab."
+descriptionVi: "Một mẩu chuyện đời thường về việc 'reset' sự nghiệp, tìm niềm vui từ đống linh kiện cũ kỹ và hành trình mang Internet trở lại phòng Lab."
+date: "2025-12-01"
+image: "/images/blog/minecraft-sunset.jpg"
+tags: ["homelab", "linux", "minecraft", "ubuntu", "slice-of-life"]
+---
+
+import { P, H2, BilingualSection } from "@/components/bilingual-content";
+
+<div className="not-prose font-mono bg-[#f5f1ed] dark:bg-[#1a1614] border-4 border-gray-300 dark:border-black shadow-2xl my-8 relative overflow-hidden rounded-sm leading-relaxed">
+
+  {/* Background Pattern */}
+  <div className="absolute inset-0 opacity-5 dark:opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(#8a7c72 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
+
+  {/* HEADER */}
+  <div className="bg-[#5b8731] dark:bg-[#5b8731] p-6 border-b-8 border-[#3f5e22] dark:border-[#3f5e22] relative z-10">
+    <div className="text-center drop-shadow-md">
+      <div className="text-3xl md:text-5xl font-bold text-[#283c16] dark:text-[#283c16] absolute top-1 left-1 w-full select-none transform translate-y-1">MINECRAFT SERVER</div>
+      <div className="text-3xl md:text-5xl font-bold text-white dark:text-white relative z-10 w-full select-none tracking-tighter">MINECRAFT SERVER</div>
+      <div className="text-sm md:text-base font-bold text-[#ffff55] dark:text-[#ffff55] mt-2 animate-bounce drop-shadow-md inline-block transform -rotate-2">
+         ✨ Now with 100% more Linux! ✨
+      </div>
+    </div>
+  </div>
+
+  <div className="p-4 md:p-8 relative z-10">
+
+    {/* ADVANCEMENT TOAST */}
+    <div className="bg-gray-100 dark:bg-[#212121] border-2 border-gray-300 dark:border-white/20 p-3 mb-8 flex items-center gap-4 w-fit mx-auto rounded shadow-lg transform hover:scale-105 transition-transform cursor-help">
+      <div className="w-10 h-10 bg-[#5b8731] dark:bg-[#5b8731] border-2 border-gray-400 dark:border-white flex items-center justify-center text-white dark:text-white font-bold text-xs shadow-inner">XP</div>
+      <div>
+        <div className="text-[#d4c700] dark:text-[#ffff55] text-xs font-bold uppercase tracking-wider">Advancement Made!</div>
+        <div className="font-bold text-base text-gray-900 dark:text-white">Respawn Point Set</div>
+      </div>
+    </div>
+
+    {/* INTRODUCTION */}
+    <P
+      en={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          Mid-September marked a strange turning point: I quit my job and hit the "reset" button to return to university. To be honest, dropping from a stable income back to the "broke student" tier felt a bit like falling off a bike—jarring and slightly embarrassing. The lectures were dry, sure, but that wasn't the worst part.
+          <br/><br/>
+          The real struggle was the sudden silence. I went from a schedule packed with deadlines to being a guy sitting around all day, tinkering with basic CRUD websites just to feel productive. I tried to fill the void with personal projects, contests, and gaming, but those first few days dragged on, agonizingly slow and strangely empty.
+        </span>
+      }
+      vi={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          Giữa tháng 9, tôi quyết định nghỉ việc, quay lại giảng đường đại học. Cảm giác đang từ người có thu nhập ổn định bỗng "rớt hạng" xuống đáy xã hội thật sự rất tệ, và càng tệ hơn nữa là phải đối mặt với những bài giảng khô khan trên trường.
+          <br/><br/>
+          Nhưng đó vẫn chưa phải là điều đáng sợ nhất. Cảm giác tệ nhất chính là sự hụt hẫng—từ một người luôn bận rộn tối ngày, giờ tôi trở lại làm một cậu sinh viên "đụt cận trĩ" cả ngày chỉ ngồi code mấy trang web CRUD cơ bản. Chẳng có mấy việc để làm. Dù tôi đã cố gắng lấp đầy thời gian biểu bằng dự án cá nhân, thi thố hay cày game, cuộc sống những ngày đầu vẫn cứ trôi qua một cách chán ngắt và dài lê thê.
+        </span>
+      }
+    />
+
+    <div className="h-8"></div>
+
+    {/* SECTION 2 */}
+    <div className="my-8">
+      <div className="bg-[#8b7355] dark:bg-[#6b5845] p-1 border-4 border-[#3a2f23] dark:border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.6)]">
+        <div className="bg-[#c6a877] dark:bg-[#8b7355] border-2 border-[#f4d7a8] dark:border-[#a88c68] px-4 py-3">
+          <H2 en="⛏ Finding joy in old hardware" vi="⛏ Niềm vui từ những linh kiện cũ" />
+        </div>
+      </div>
+    </div>
+    
+    <div className="bg-[#c6c6c6] dark:bg-[#c6c6c6] p-1 rounded-sm border-2 border-gray-600 dark:border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] mb-8 max-w-md mx-auto">
+      <div className="bg-[#8b8b8b] dark:bg-[#8b8b8b] p-4 border-t-2 border-l-2 border-[#373737] dark:border-[#373737] border-b-2 border-r-2 border-white dark:border-white">
+        <div className="text-center text-[#373737] dark:text-[#373737] text-xs mb-2 font-bold">WORKBENCH</div>
+        <div className="grid grid-cols-3 gap-1 w-fit mx-auto">
+          {['GPU', 'CPU', 'RAM', 'PSU', 'MB', 'FAN'].map((item) => (
+            <div key={item} className="w-16 h-16 bg-[#8b8b8b] dark:bg-[#8b8b8b] border-2 border-[#373737] dark:border-[#373737] shadow-[inset_2px_2px_0px_0px_rgba(0,0,0,0.2)] flex items-center justify-center group hover:bg-[#9b9b9b] dark:hover:bg-[#9b9b9b] transition-colors">
+              <span className="text-[10px] text-white/70 group-hover:text-white font-bold">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <P
+      en={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          Then, one lucky afternoon, serendipity struck: I found a dirt-cheap computer combo listing. And "dirt cheap" is accurate, considering the expiration date on this electronic waste was probably older than some of my younger cousins. The motherboard was pushing 10 years, and the VGA card was definitely a grumpy teenager nearing 15.
+          <br/><br/>
+          My inner scavenger woke up. I went on a hunt: 200k for the VGA, 300k for the mainboard, another 300k for the PSU. All told, I built a 4th Gen server with 16GB of RAM for roughly <span className="text-[#22aa22] dark:text-[#55ff55] font-bold">1.2 million VND</span> (screen not included). Bringing the pile home felt like adopting a senior pet. Due to its advanced age, I had to swap the CPU/Mainboard once and perform emergency surgery (superglue) on a snapped heatsink. But other than that? Pure, nostalgic joy.
+        </span>
+      }
+      vi={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          Một hôm, xui rủi thế nào tôi lại lướt được một combo máy tính giá "hạt dẻ". Thực ra rẻ cũng đúng thôi, vì "date" của đống rác thải công nghệ này chắc còn cao hơn tuổi vài đứa em họ tôi. Cái mainboard ít thì cũng phải ngót nghét 10 năm, còn cái VGA thì chắc chắn là "cụ tổ" gần 15 tuổi rồi.
+          <br/><br/>
+          Cái máu "đồng nát" trong người tôi nổi lên. Tôi đi gom mỗi chỗ một thứ: cái VGA 200k, cái main 300k, cái nguồn 300k. Nói chung là, tổng thiệt hại cho một con server đời 4, 16GB RAM đâu đấy chỉ vỏn vẹn <span className="text-[#22aa22] dark:text-[#55ff55] font-bold">1 triệu 2</span> (trừ màn hình). Tôi bếch đống đấy lên trọ rồi hí hoáy lắp ghép. Vì tuổi đời cũng cao nên em nó hơi đỏng đảnh, tôi phải thay một combo main/cpu khác, cùng với việc dùng keo dán lại cái tản nhiệt đã gãy đôi. Ngoài ra thì mọi thứ trơn tru lạ thường.
+        </span>
+      }
+    />
+
+    <div className="h-8"></div>
+
+    {/* SECTION 3 */}
+    <div className="my-8">
+      <div className="bg-[#8b0000] dark:bg-[#5a0000] p-1 border-4 border-[#4a0000] dark:border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.6)]">
+        <div className="bg-[#c41e1e] dark:bg-[#8b0000] border-2 border-[#ff5555] dark:border-[#aa1111] px-4 py-3">
+          <H2 en="⚠ When the Lab went silent" vi="⚠ Khoảng lặng của phòng Lab" />
+        </div>
+      </div>
+    </div>
+    
+    <P
+      en={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          At first, I just intended to keep it as a toy; after all, my laptop was doing fine. But destiny called when someone took away the laptop that was broadcasting Wi-Fi for our Lab.
+          <br/><br/>
+          It sounds trivial, but it meant <strong>The Lab had no internet.</strong> Our powerful servers with RTX 3080s and 4070s turned into expensive scrap metal. No TV to watch the World Championship (CKTG), and worse, no internet to even scroll through our phones. Even my own PC became useless. Looking at my dusty collection—a generic USB Wi-Fi adapter from who-knows-when and a pile of questionable WireGuard profiles—I realized it was time for an upgrade operation.
+        </span>
+      }
+      vi={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          Mấy hôm đầu, tôi chỉ định để con máy đó chơi chơi thôi, dù sao thì tôi cũng đang dùng laptop rất ổn. Nhưng cơ hội để nó phát huy tác dụng đến khi người ta... bế mất cái laptop đang phát mạng của phòng Lab đi.
+          <br/><br/>
+          Chuyện nghe không có gì to tát, nhưng điều đó có nghĩa là: <strong>Lab không có mạng.</strong> Mấy con server 3080, 4070 xịn xò bỗng trở thành đống sắt vụn không hơn không kém. Không có TV để xem Chung Kết Thế Giới (CKTG), và tệ hơn nữa là chẳng còn mạng để lướt điện thoại. Ngay cả cái PC của tôi cũng vô dụng. Tận dụng những gì mình có—gồm một cái USB Wifi không biết có từ bao giờ và một đống profile WireGuard không biết sống chết ra sao—tôi bắt tay vào công cuộc "cứu net".
+        </span>
+      }
+    />
+
+    {/* IMAGE */}
+    <div className="p-2 bg-gray-200/50 dark:bg-black/30 border-4 border-gray-400 dark:border-black inline-block w-full my-6 hover:scale-[1.01] transition-transform">
+      <img 
+        src="/images/blog/minecraft-sunset.png" 
+        alt="Minecraft Server View" 
+        className="w-full border-2 border-gray-300 dark:border-[#ffffff]/10 block"
+      />
+      <div className="text-center font-mono text-xs mt-2 text-gray-600 dark:text-[#aaaaaa]">Figure_01.png</div>
+    </div>
+
+    {/* SECTION 4 */}
+    <div className="my-8">
+      <div className="bg-[#aa8800] dark:bg-[#7a6200] p-1 border-4 border-[#5a4800] dark:border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.6)]">
+        <div className="bg-[#ffcc00] dark:bg-[#cc9900] border-2 border-[#ffff55] dark:border-[#ddaa00] px-4 py-3">
+          <H2 en="⚙ Struggling with Windows" vi="⚙ Những bất cập trên Windows" />
+        </div>
+      </div>
+    </div>
+
+    <P
+      en={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          The first mission: <strong>How to get online?</strong> It seemed simple enough. My PixLink AX1800 USB Wi-Fi was plug-n-play on Windows—just plug it in, and we're live. But then the headaches started.
+          <br/><br/>
+          First, this "Guangzhou special" USB didn't support disabling random MAC addresses; it decided to hop identities every time it restarted. This was a nightmare because our university network (DH-FPT) registers internet access by specific MAC addresses. The Lab network died constantly, and I had to babysit it every single day.
+          <br/><br/>
+          But that was just annoying. The real dealbreaker was this: <span className="text-red-600 dark:text-[#ff5555]">Windows refused to share a Hotspot while running a VPN.</span> It was like a jealous partner. No VPN meant no World Championship stream, and restricted access to our servers. This was unacceptable.
+        </span>
+      }
+      vi={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          Điều đầu tiên cần làm chính là: <strong>Làm sao để vào được mạng?</strong> Nghe thì khá đơn giản, cái USB Wifi PixLink AX1800 kia hỗ trợ cắm-là-chạy trên Windows, nên chỉ cần cắm vào là nhận, share mạng đi đâu cũng được. Tuy thế lại nảy sinh rất nhiều vấn đề.
+          <br/><br/>
+          Thứ nhất, cái USB Wifi "hàng Quảng Châu" này không hỗ trợ tắt tính năng random MAC; thay vào đó, nó tự nhảy MAC mỗi khi có bất kỳ thay đổi nào hay tắt đi bật lại. Điều này cực kỳ bất tiện, vì mạng DH-FPT của chúng tôi được đăng ký theo MAC của máy cá nhân—mỗi sinh viên chỉ được đăng ký một máy. Thế là mạng trên Lab chết liên tục, và ngày nào tôi cũng phải ngồi canh nó như canh con mọn.
+          <br/><br/>
+          Tuy vậy, việc này chỉ dừng lại ở mức khó chịu. Vấn đề thứ 2 mới là thứ nan giải: <span className="text-red-600 dark:text-[#ff5555]">Windows không cho phép chia sẻ mạng (Hotspot) và bật VPN cùng lúc.</span> Điều đó có nghĩa là chúng tôi không thể xem CKTG trên TV và các server cũng bị giới hạn truy cập rất nhiều.
+        </span>
+      }
+    />
+
+    <div className="h-8"></div>
+
+    {/* SECTION 5 */}
+    <div className="my-8">
+      <div className="bg-[#005588] dark:bg-[#003355] p-1 border-4 border-[#002244] dark:border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.6)]">
+        <div className="bg-[#3eaadd] dark:bg-[#2888bb] border-2 border-[#55ffff] dark:border-[#4499cc] px-4 py-3">
+          <H2 en="💎 Migrating to Linux" vi="💎 Cuộc di cư sang Linux" />
+        </div>
+      </div>
+    </div>
+
+    <P
+      en={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          So, despite being a loyal Windows user, I decided to pack my digital bags and move the PC to <strong>Ubuntu</strong>. The migration was actually surprisingly smooth, especially with some storage support from Mr. Lap. Aside from not being able to play League of Legends, everything felt faster and smoother.
+          <br/><br/>
+          However, this led to a critical issue: My generic USB Wi-Fi had <strong>no drivers</strong> on Linux. Searching the manufacturer's website yielded absolutely nothing. Just digital silence.
+          <br/><br/>
+          But luck was on my side. After scouring Google, I found its "Guangdong cousins"—devices from different brands but sharing the same grandfather (chipset), which <em>did</em> have open-source drivers. There were a few bugs, but after 20 minutes of compiling code and fixing errors, the connection finally lit up. My PC had Wi-Fi.
+        </span>
+      }
+      vi={
+        <span className="block mb-4 text-gray-800 dark:text-gray-200">
+          Nên dù là một người dùng trung thành với Windows, tôi vẫn quyết định chuyển đổi case PC của mình sang <strong>Ubuntu</strong>. Thực ra việc chuyển đổi diễn ra khá dễ dàng, nhất là với sự hỗ trợ về ổ lưu trữ của anh Lập. Trừ việc không chơi được Liên Minh ra thì về cơ bản các tác vụ đều mượt mà hơn nhiều.
+          <br/><br/>
+          Tuy thế, việc này cũng dẫn đến một vấn đề trọng yếu: Cái USB Wifi <strong>không có driver</strong> tồn tại trên Linux. Việc tìm kiếm driver trên trang web của nhà cung cấp cũng không thu được kết quả gì.
+          <br/><br/>
+          Nhưng cũng may mắn là, sau khi dạo quanh Google một hồi, tôi đã tìm ra những "người anh em Quảng Đông" cùng cha khác ông nội với nó, sử dụng cùng một bộ vi xử lý và đã được viết driver cho Linux. Dù còn một ít lỗi nhỏ nhưng sau 20 phút sửa lỗi và cài đặt, cuối cùng thì cái PC của tôi cũng có Wifi.
+        </span>
+      }
+    />
+
+    {/* TERMINAL */}
+    <div className="bg-gray-900 dark:bg-black/80 border-2 border-gray-600 dark:border-white/20 p-4 mt-6 font-mono text-sm text-gray-100 dark:text-white shadow-inner rounded relative">
+      <div className="absolute top-2 right-2 flex gap-1">
+        <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-[#ff5555]"></div>
+        <div className="w-2 h-2 rounded-full bg-yellow-500 dark:bg-[#ffff55]"></div>
+        <div className="w-2 h-2 rounded-full bg-green-500 dark:bg-[#55ff55]"></div>
+      </div>
+      <p className="mb-1"><span className="text-gray-400 dark:text-[#aaaaaa]">&lt;root&gt;</span> make install</p>
+      <p className="mb-1 text-gray-400 dark:text-[#aaaaaa] italic">...compiling...</p>
+      <p className="mb-1"><span className="text-gray-400 dark:text-[#aaaaaa]">&lt;System&gt;</span> ping google.com</p>
+      <p className="mb-1"><span className="text-cyan-400 dark:text-[#55ffff]">Reply from 142.250.191.46:</span> bytes=32 time=24ms TTL=115</p>
+      <p className="mt-2 text-lg"><span className="text-yellow-500 dark:text-[#ffff55] font-bold">Server:</span> <span className="text-green-500 dark:text-[#55ff55]">Connected to the Internet!</span></p>
+      <p className="animate-pulse font-bold text-green-500 dark:text-[#55ff55]">_</p>
+    </div>
+
+  </div>
+</div>
+
+{/* FOOTER */}
+<div className="flex flex-col items-center justify-center space-y-4 my-12">
+  <div className="bg-gray-300 dark:bg-[#c6c6c6] border-b-4 border-r-4 border-gray-600 dark:border-[#555555] border-t-4 border-l-4 border-gray-100 dark:border-white px-8 py-4 shadow-lg transform hover:-translate-y-1 transition-transform cursor-pointer">
+    <h3 className="text-xl font-bold text-gray-700 dark:text-[#3f3f3f] uppercase tracking-widest">To Be Continued...</h3>
+  </div>
+  <BilingualSection>
+    <P 
+      en={<span className="text-center text-gray-500 dark:text-gray-400 italic block">Next time: Punching firewalls and taming the Docker beast.</span>}
+      vi={<span className="text-center text-gray-500 dark:text-gray-400 italic block">Kỳ tới: Đấm tường lửa và thuần hóa quái vật Docker.</span>}
+    />
+  </BilingualSection>
+</div>
