@@ -32,5 +32,23 @@
     "switch": "Switch language",
     "vietnamese": "Tiếng Việt",
     "english": "English"
+  },
+  "contact": {
+    "title": "Contact Server Admin",
+    "subtitle": "Have a question, suggestion, or issue with the server? Send me a message!",
+    "minecraftUsername": "Minecraft Username",
+    "minecraftUsernamePlaceholder": "Steve",
+    "minecraftUsernameHint": "Letters, numbers, and underscores only",
+    "email": "Email (optional)",
+    "emailPlaceholder": "steve@example.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "Server lag issue",
+    "message": "Message",
+    "messagePlaceholder": "Describe your message here...",
+    "required": "*",
+    "sending": "Sending...",
+    "send": "Send Message",
+    "successMessage": "✓ Your message has been sent successfully! We'll get back to you soon.",
+    "errorPrefix": "✗ "
   }
 }

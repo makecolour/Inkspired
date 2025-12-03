@@ -391,17 +391,17 @@ export default function AboutPage() {
           </div>
 
           <div className="flex flex-col overflow-visible relative z-10 pt-8" style={{ transformStyle: 'preserve-3d', gap: '0.5em' }}>
-            <h1 className="hero-line hero-parallax text-[clamp(3rem,12vw,10rem)] font-black leading-[1.1] tracking-tighter" 
+            <h1 className="hero-line hero-parallax text-[clamp(3rem,12vw,9rem)] font-black leading-[1.1] tracking-tighter" 
               style={{ transformStyle: 'preserve-3d' }}>
-              {'NGUYỄN THƯỢNG'.split('').map((char, i) => (
+              {'MONTSERRAT'.split('').map((char, i) => (
                 <span key={i} className="spiral-char inline-block" style={{ transformStyle: 'preserve-3d' }}>
                   {char === ' ' ? '\u00A0' : char}
                 </span>
               ))}
             </h1>
-            <h1 className="hero-line hero-parallax text-[clamp(3rem,12vw,10rem)] font-black leading-[1.5] tracking-tighter" 
+            <h1 className="hero-line hero-parallax text-[clamp(3rem,12vw,9rem)] font-black leading-[1.5] tracking-tighter" 
               style={{ transformStyle: 'preserve-3d' }}>
-              {'QUYỀN'.split('').map((char, i) => (
+              {'NGUYỄN'.split('').map((char, i) => (
                 <span key={i} className="spiral-char inline-block" style={{ transformStyle: 'preserve-3d' }}>
                   {char}
                 </span>
